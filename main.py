@@ -21,8 +21,7 @@ from google.genai import types
 
 def generate(filename):
     client = genai.Client(
-      #os.environ["GOOGLE_API_KEY"]='AIzaSyBigSOvAdo7d0hqnKmjnMHyQsRMYv4xb9U'
-      api_key=os.environ.get("GEMINI_API_KEY")
+        api_key=os.environ.get("GEMINI_API_KEY")
     )
     prompt = """
     Please provide an exact trascript for the audio, followed by sentiment analysis.
