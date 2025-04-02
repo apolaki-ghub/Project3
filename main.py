@@ -5,18 +5,10 @@ from werkzeug.utils import secure_filename
 
 import os, io
 
-#from google.cloud import speech
-#from google.protobuf import wrappers_pb2
-#from google.cloud import texttospeech_v1
-#from IPython.display import Audio, display
-#from google.cloud import language_v2
-#import vertexai
-#from vertexai.generative_models import GenerativeModel, Part
-impoer base64
+import base64
 from google import genai
 from google.genai import types
 
-#vertexai.init(project=project_id, location="us-central1")
 
 #model = GenerativeModel("gemini-1.5-flash-001")
 
@@ -32,38 +24,18 @@ pyth
     Text: USERS SPEECH TRANSCRIPTION
 
     Sentiment Analysis: positive|neutral|negative
+
+    
+    Sentiment Score: Sentiment score
+
+    Sentiment Magnitude: Sentiment Magnitude
     """
-    #myfile = client.files.upload(file='gs://proj3sentanalysis/harvard.wav')
-    #audio_file_uri = "gs://proj3sentanalysis/harvard.wav"
-    #audio_file = types.Part.from_uri(audio_file_uri, mime_type="audio/wav")
-
-
     myfile = client.files.upload(file=filename)
-
-
-
-    '''response = client.models.generate_content(
-    model='gemini-2.0-flash',
-    contents=['Describe this audio clip', myfile]
-    )'''
-
 
     with open(filename, 'rb') as f:
         audio_bytes = f.read()
 
-
-
-
     model = "gemini-2.0-flash"
-    '''contents = [
-        types.Content(
-        role="user",
-        parts = [
-            types.Part.from_uri(file_uri=myfile.uri,  mime_type="audio/wav"),
-            types.Part.from_text(text=prompt),
-            ],    
-        ),
-    ]'''
 
     generate_content_config = types.GenerateContentConfig(
     temperature = 1,
@@ -71,13 +43,6 @@ pyth
     max_output_tokens = 8192,
     response_mime_type ="text/plain",
     )
-
-    '''response = client.models.generate_content(
-    model=model,
-    contents=contents,
-    config = generate_content_config,
-    )'''
-
 
     response = client.models.generate_content(
         model=model,
