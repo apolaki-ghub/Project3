@@ -6,12 +6,13 @@ from werkzeug.utils import secure_filename
 import os, io
 
 #from google.cloud import speech
-from google.protobuf import wrappers_pb2
+#from google.protobuf import wrappers_pb2
 #from google.cloud import texttospeech_v1
-from IPython.display import Audio, display
+#from IPython.display import Audio, display
 #from google.cloud import language_v2
 #import vertexai
 #from vertexai.generative_models import GenerativeModel, Part
+impoer base64
 from google import genai
 from google.genai import types
 
